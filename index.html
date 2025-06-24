@@ -359,7 +359,7 @@
       color: #6c757d;
     }
 
-    /* Team Section */
+    /* Team Section - Removed rotation */
     .team-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -423,7 +423,7 @@
 
     .team-card:hover .team-img {
       filter: grayscale(0%);
-      transform: scale(1.05) rotate(5deg);
+      transform: scale(1.05); /* Removed rotation */
       border-color: var(--secondary);
     }
 
@@ -534,7 +534,7 @@
     }
 
     .product-card:hover .product-icon {
-      transform: scale(1.2) rotate(10deg);
+      transform: scale(1.2);
       color: var(--secondary);
       animation: iconPulse 1.5s infinite;
     }
@@ -776,6 +776,37 @@
       margin: 10px 0;
     }
 
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      opacity: 0;
+      transform: translateY(100px);
+      transition: var(--transition);
+      z-index: 100;
+      box-shadow: 0 0 15px rgba(229, 9, 20, 0.5);
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      background: var(--secondary);
+      transform: translateY(-5px);
+    }
+
     /* Animations */
     @keyframes pulse {
       0% { 
@@ -793,9 +824,9 @@
     }
 
     @keyframes iconPulse {
-      0% { transform: scale(1.1) rotate(10deg); }
-      50% { transform: scale(1.3) rotate(10deg); }
-      100% { transform: scale(1.1) rotate(10deg); }
+      0% { transform: scale(1.1); }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(1.1); }
     }
 
     @keyframes float {
@@ -816,6 +847,18 @@
     /* Floating animation for CTA */
     .cta-button {
       animation: float 3s ease-in-out infinite;
+    }
+
+    /* Scroll progress indicator */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: var(--primary);
+      z-index: 1000;
+      width: 0%;
+      transition: width 0.2s ease;
     }
 
     /* Responsive */
@@ -940,6 +983,12 @@
 </head>
 
 <body>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  
+  <a href="#" class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+  
   <nav>
     <div class="nav-container">
       <a href="#" class="nav-logo">
@@ -1180,6 +1229,26 @@
           behavior: 'smooth'
         });
       });
+    });
+
+    // Back to top button
+    const backToTop = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    // Scroll progress indicator
+    const scrollProgress = document.getElementById('scrollProgress');
+    
+    window.addEventListener('scroll', () => {
+      const scrollTotal = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrollPercentage = (window.scrollY / scrollTotal) * 100;
+      scrollProgress.style.width = scrollPercentage + '%';
     });
   </script>
 </body>
