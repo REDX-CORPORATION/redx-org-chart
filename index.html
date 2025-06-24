@@ -1,148 +1,515 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RED-X Corporation</title>
+  <title>RED-X Corporation | Premium Gaming Solutions</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    :root {
+      --primary: #e50914;
+      --primary-dark: #b20710;
+      --secondary: #00d9ff;
+      --dark: #0a0a0a;
+      --dark-light: #1a1a1a;
+      --gray: #333;
+      --light: #f0f0f0;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      --glow: 0 0 15px rgba(229, 9, 20, 0.7);
+    }
+
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
       font-family: 'Roboto', sans-serif;
-      margin: 0;
-      background-color: #0f0f0f;
-      color: #ffffff;
+      background-color: var(--dark);
+      color: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
+    /* Header & Navigation */
     header {
-      background: linear-gradient(90deg, #d60000, #8e0000);
-      padding: 30px 20px;
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      padding: 100px 20px 60px;
       text-align: center;
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 30%, rgba(229, 9, 20, 0.3), transparent 70%);
+      pointer-events: none;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .logo-icon {
+      font-size: 3.5rem;
+      color: white;
+      text-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+      animation: pulse 2s infinite;
     }
 
     header h1 {
       margin: 0;
-      font-size: 3rem;
-      text-shadow: 2px 2px #000;
+      font-size: 3.5rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+      letter-spacing: -1px;
+    }
+
+    header p {
+      font-size: 1.4rem;
+      max-width: 700px;
+      margin: 20px auto 40px;
+      opacity: 0.9;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--dark-light);
+      color: white;
+      text-decoration: none;
+      padding: 15px 35px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: var(--transition);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      box-shadow: var(--glow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+
+    .cta-button:hover::before {
+      left: 100%;
+    }
+
+    .cta-button:hover {
+      background: rgba(0, 0, 0, 0.7);
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px var(--primary);
     }
 
     nav {
-      background: #1e1e1e;
-      padding: 10px;
+      background: rgba(10, 10, 10, 0.95);
+      padding: 0 20px;
       display: flex;
       justify-content: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+      border-bottom: 1px solid rgba(229, 9, 20, 0.3);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .nav-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: white;
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
       gap: 30px;
-      box-shadow: inset 0 -1px 0 #333;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      font-weight: bold;
-      padding: 10px;
-      transition: all 0.3s ease;
-      border-radius: 5px;
+      font-weight: 500;
+      padding: 20px 0;
+      transition: var(--transition);
+      position: relative;
+      font-size: 1.1rem;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 15px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+
+    nav a:hover::after {
+      width: 100%;
     }
 
     nav a:hover {
-      background: #ff0000;
-      box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+      color: var(--primary);
     }
 
+    /* Sections */
     section {
-      padding: 60px 20px;
-      max-width: 1100px;
+      padding: 80px 20px;
+      max-width: 1200px;
       margin: auto;
     }
 
-    h2 {
-      color: #ff0000;
-      border-bottom: 2px solid #ff0000;
-      padding-bottom: 10px;
-      margin-bottom: 30px;
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
     }
 
+    .section-header h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-header h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    .section-header p {
+      max-width: 700px;
+      margin: 20px auto 0;
+      color: #aaa;
+      font-size: 1.1rem;
+    }
+
+    /* Grids & Cards */
     .team-grid, .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 30px;
     }
 
     .card {
-      background-color: #1c1c1c;
-      border: 1px solid #333;
-      border-radius: 12px;
-      padding: 20px;
+      background: linear-gradient(145deg, #151515, #0f0f0f);
+      border: 1px solid rgba(51, 51, 51, 0.5);
+      border-radius: 15px;
+      padding: 25px;
       text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: var(--transition);
       cursor: pointer;
       overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--primary);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s ease;
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
     }
 
     .card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #ff0000, 0 0 25px #8b0000;
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+      border-color: rgba(229, 9, 20, 0.3);
     }
 
     .card img {
       width: 100%;
-      height: 200px;
+      height: 220px;
       object-fit: cover;
       border-radius: 10px;
-      margin-bottom: 15px;
-      filter: brightness(90%);
+      margin-bottom: 20px;
+      transition: var(--transition);
+      filter: grayscale(20%);
+    }
+
+    .card:hover img {
+      filter: grayscale(0%);
+      transform: scale(1.03);
     }
 
     .card h3 {
-      margin-top: 0;
-      font-size: 1.3rem;
+      margin: 10px 0 5px;
+      font-size: 1.4rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
     }
 
-    .contact-links a {
+    .card p {
+      color: #bbb;
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+
+    .price {
       display: block;
-      margin: 10px 0;
-      color: #00d9ff;
+      background: rgba(229, 9, 20, 0.15);
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-weight: 500;
+      margin-top: 15px;
+      transition: var(--transition);
+    }
+
+    .card:hover .price {
+      background: rgba(229, 9, 20, 0.3);
+    }
+
+    /* Contact Section */
+    .contact-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .contact-card {
+      background: var(--dark-light);
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      transition: var(--transition);
+      border: 1px solid rgba(51, 51, 51, 0.5);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(229, 9, 20, 0.3);
+    }
+
+    .contact-card i {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .contact-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .contact-card a {
+      display: inline-block;
+      color: var(--secondary);
       text-decoration: none;
       font-weight: 500;
-      transition: color 0.3s ease;
+      transition: var(--transition);
+      padding: 8px 20px;
+      border-radius: 30px;
+      background: rgba(0, 217, 255, 0.1);
+      border: 1px solid rgba(0, 217, 255, 0.2);
     }
 
-    .contact-links a:hover {
-      color: #ffffff;
-      text-shadow: 0 0 5px #00d9ff;
+    .contact-card a:hover {
+      color: white;
+      background: rgba(0, 217, 255, 0.2);
+      box-shadow: 0 0 15px rgba(0, 217, 255, 0.3);
     }
 
+    .coming-soon {
+      opacity: 0.7;
+    }
+
+    /* Footer */
     footer {
       text-align: center;
-      padding: 25px;
-      background-color: #121212;
+      padding: 50px 20px 30px;
+      background-color: #080808;
       color: #666;
+      position: relative;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin: 30px 0;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--dark-light);
+      color: #aaa;
+      font-size: 1.3rem;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-5px);
+    }
+
+    .copyright {
+      margin-top: 30px;
       font-size: 0.9rem;
+    }
+
+    /* Animations */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+      
+      header p {
+        font-size: 1.1rem;
+      }
+      
+      .nav-links {
+        gap: 15px;
+      }
+      
+      nav a {
+        font-size: 0.95rem;
+        padding: 15px 0;
+      }
+      
+      .section-header h2 {
+        font-size: 2rem;
+      }
+      
+      .team-grid, .product-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-links {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-container {
+        flex-direction: column;
+        padding: 10px 0;
+      }
+      
+      .nav-links {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      header {
+        padding: 80px 20px 40px;
+      }
+      
+      header h1 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <h1>🔴 RED-X Corporation</h1>
-    <p>Free panels, secure tools, game ID deals, giveaways & more.</p>
-  </header>
-
   <nav>
-    <a href="#team">Team</a>
-    <a href="#products">Products</a>
-    <a href="#contact">Contact</a>
+    <div class="nav-container">
+      <a href="#" class="nav-logo">RED<span>-X</span></a>
+      <div class="nav-links">
+        <a href="#team">Team</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
   </nav>
 
+  <header>
+    <div class="logo">
+      <div class="logo-icon">🔴</div>
+      <h1>RED-X Corporation</h1>
+    </div>
+    <p>Premium gaming panels, secure tools, exclusive deals, and giveaways for elite gamers</p>
+    <a href="#products" class="cta-button">Explore Our Products</a>
+  </header>
+
   <section id="team">
-    <h2>Our Team</h2>
+    <div class="section-header">
+      <h2>Our Elite Team</h2>
+      <p>The talented professionals behind our cutting-edge gaming solutions</p>
+    </div>
     <div class="team-grid">
       <a href="team/mohtasim.html" class="card">
         <img src="https://i.ibb.co/Lhxy0BQq/0516-1.gif" alt="Mohtasim Billah Jitu">
@@ -178,22 +545,25 @@
   </section>
 
   <section id="products">
-    <h2>Our Products</h2>
+    <div class="section-header">
+      <h2>Premium Products</h2>
+      <p>High-performance gaming solutions designed for competitive advantage</p>
+    </div>
     <div class="product-grid">
       <a href="products/elite-panel.html" class="card">
         <h3>Elite Panel</h3>
         <p>DIRECT HEAD AIMBOT, LOCATION</p>
-        <p>Price: 500TK (1M) | 1000TK (3M) | 1500TK (Lifetime)</p>
+        <span class="price">500TK (1M) | 1000TK (3M) | 1500TK (Lifetime)</span>
       </a>
       <a href="products/panel-prime.html" class="card">
         <h3>Panel Prime</h3>
         <p>Elite Features + Sniper Scope + Switch</p>
-        <p>Price: 800TK (1M) | 1500TK (3M) | 2500TK (Lifetime)</p>
+        <span class="price">800TK (1M) | 1500TK (3M) | 2500TK (Lifetime)</span>
       </a>
       <a href="products/android-panel.html" class="card">
         <h3>Android Panels</h3>
         <p>Hologram Location Panel – 100% Safe</p>
-        <p>Price: 1500TK (1 OBB Update)</p>
+        <span class="price">1500TK (1 OBB Update)</span>
       </a>
       <a href="products/ios-panel.html" class="card">
         <h3>iOS Panels</h3>
@@ -202,7 +572,7 @@
       <a href="products/code-cracker.html" class="card">
         <h3>RED-X Code Cracker</h3>
         <p>Crack ANY panel codes. Powerful for professionals.</p>
-        <p>Price: 3000TK (1 Year)</p>
+        <span class="price">3000TK (1 Year)</span>
       </a>
       <a href="products/emulator-tools.html" class="card">
         <h3>Emulator Bypass Tools</h3>
@@ -211,34 +581,76 @@
       </a>
       <a href="products/brutal-panel.html" class="card">
         <h3>Brutal Panel</h3>
-        <p>Coming Soon...</p>
+        <p class="coming-soon">Coming Soon...</p>
       </a>
       <a href="products/dynamic-panel.html" class="card">
         <h3>Dynamic Panel</h3>
-        <p>Coming Soon...</p>
+        <p class="coming-soon">Coming Soon...</p>
       </a>
       <a href="products/premium-panel.html" class="card">
         <h3>Premium Panel</h3>
-        <p>Coming Soon...</p>
+        <p class="coming-soon">Coming Soon...</p>
       </a>
     </div>
   </section>
 
   <section id="contact">
-    <h2>Contact & Social Links</h2>
+    <div class="section-header">
+      <h2>Connect With Us</h2>
+      <p>Join our community for the latest updates, deals, and support</p>
+    </div>
     <div class="contact-links">
-      <a href="https://discord.gg/f7KPc9JyeY">Discord Server</a>
-      <a href="https://www.youtube.com/@RedX_Official1">YouTube Channel</a>
-      <a href="https://t.me/+OglBPVcrngY1OGQ9">Telegram Channel</a>
-      <a href="mailto:official.redxcorporation@gmail.com">Email Us</a>
-      <a href="#">Facebook Page (Coming Soon)</a>
-      <a href="#">TikTok (Coming Soon)</a>
+      <div class="contact-card">
+        <i class="fab fa-discord"></i>
+        <h3>Discord Community</h3>
+        <a href="https://discord.gg/f7KPc9JyeY">Join Our Server</a>
+      </div>
+      <div class="contact-card">
+        <i class="fab fa-youtube"></i>
+        <h3>YouTube Channel</h3>
+        <a href="https://www.youtube.com/@RedX_Official1">Subscribe Now</a>
+      </div>
+      <div class="contact-card">
+        <i class="fab fa-telegram"></i>
+        <h3>Telegram Channel</h3>
+        <a href="https://t.me/+OglBPVcrngY1OGQ9">Join Channel</a>
+      </div>
+      <div class="contact-card">
+        <i class="fas fa-envelope"></i>
+        <h3>Email Support</h3>
+        <a href="mailto:official.redxcorporation@gmail.com">Contact Us</a>
+      </div>
+      <div class="contact-card">
+        <i class="fab fa-facebook"></i>
+        <h3>Facebook</h3>
+        <a href="#">Coming Soon</a>
+      </div>
+      <div class="contact-card">
+        <i class="fab fa-tiktok"></i>
+        <h3>TikTok</h3>
+        <a href="#">Coming Soon</a>
+      </div>
     </div>
   </section>
 
   <footer>
-    <p>&copy; 2025 RED-X Corporation. All rights reserved.</p>
+    <div class="footer-content">
+      <div class="logo">
+        <div class="logo-icon">🔴</div>
+        <h3>RED-X Corporation</h3>
+      </div>
+      <p>Premium gaming solutions for competitive players worldwide</p>
+      <div class="social-links">
+        <a href="https://discord.gg/f7KPc9JyeY"><i class="fab fa-discord"></i></a>
+        <a href="https://www.youtube.com/@RedX_Official1"><i class="fab fa-youtube"></i></a>
+        <a href="https://t.me/+OglBPVcrngY1OGQ9"><i class="fab fa-telegram"></i></a>
+        <a href="mailto:official.redxcorporation@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 RED-X Corporation. All rights reserved.</p>
+        <p>Premium gaming solutions for elite players</p>
+      </div>
+    </div>
   </footer>
 </body>
-
 </html>
