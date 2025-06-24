@@ -1,136 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Red-X Corporation — Team Roles</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-<style>
-  body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
-    color: #f5f5f5;
-    padding: 40px 20px;
-  }
-
-  .title {
-    text-align: center;
-    color: #ff3d57;
-    font-size: 2.8rem;
-    font-weight: 700;
-    margin-bottom: 50px;
-    text-shadow: 0 0 12px #ff3d57aa;
-  }
-
-  .org-chart {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-  }
-
-  .level {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 30px;
-    animation: fadeInUp 1s ease forwards;
-    opacity: 0;
-  }
-
-  .level:nth-child(2) { animation-delay: 0.2s; }
-  .level:nth-child(3) { animation-delay: 0.4s; }
-  .level:nth-child(4) { animation-delay: 0.6s; }
-
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .card {
-    background: linear-gradient(145deg, #1f1f1f, #252525);
-    border-radius: 16px;
-    padding: 30px 35px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    width: 280px;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    cursor: pointer;
-    border: 2px solid transparent;
-    user-select: none;
-  }
-
-  .card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 25px 50px rgba(255, 61, 87, 0.7);
-    border-color: #ff3d57;
-  }
-
-  .card h3 {
-    font-size: 1.4rem;
-    margin-bottom: 12px;
-    color: #fff;
-  }
-
-  .card p {
-    font-size: 1.1rem;
-    color: #ccc;
-    line-height: 1.5;
-    font-weight: 600;
-  }
-
-  @media (max-width: 768px) {
-    .card {
-      width: 90%;
-      max-width: 320px;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RED-X Corporation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
     }
-  }
-</style>
-</head>
-<body>
-  <div class="org-chart">
-    <div class="title">Red-X Corporation — Team Roles</div>
 
-    <!-- CEO -->
-    <div class="level">
-      <div class="card" onclick="location.href='profiles/mohtasim.html'">
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      background-color: #0f0f0f;
+      color: #ffffff;
+    }
+
+    header {
+      background: linear-gradient(90deg, #d60000, #8e0000);
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+      text-shadow: 2px 2px #000;
+    }
+
+    nav {
+      background: #1e1e1e;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      box-shadow: inset 0 -1px 0 #333;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px;
+      transition: all 0.3s ease;
+      border-radius: 5px;
+    }
+
+    nav a:hover {
+      background: #ff0000;
+      box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #ff0000;
+      border-bottom: 2px solid #ff0000;
+      padding-bottom: 10px;
+      margin-bottom: 30px;
+    }
+
+    .team-grid, .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background-color: #1c1c1c;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #ff0000, 0 0 25px #8b0000;
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      filter: brightness(90%);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 1.3rem;
+    }
+
+    .contact-links a {
+      display: block;
+      margin: 10px 0;
+      color: #00d9ff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .contact-links a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 5px #00d9ff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background-color: #121212;
+      color: #666;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>🔴 RED-X Corporation</h1>
+    <p>Free panels, secure tools, game ID deals, giveaways & more.</p>
+  </header>
+
+  <nav>
+    <a href="#team">Team</a>
+    <a href="#products">Products</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="team">
+    <h2>Our Team</h2>
+    <div class="team-grid">
+      <a href="team/mohtasim.html" class="card">
+        <img src="LINK_TO_CEO_IMAGE" alt="Mohtasim Billah Jitu">
         <h3>Mohtasim Billah Jitu</h3>
         <p>CEO, Founder & Lead Developer</p>
-      </div>
-    </div>
-
-    <!-- Management -->
-    <div class="level">
-      <div class="card" onclick="location.href='profiles/ashik.html'">
+      </a>
+      <a href="team/ashik.html" class="card">
+        <img src="LINK_TO_IMAGE" alt="Ashik Limon">
         <h3>Ashik Limon</h3>
         <p>General Manager & YouTube Manager</p>
-      </div>
-    </div>
-
-    <!-- Development & Client Relations -->
-    <div class="level">
-      <div class="card" onclick="location.href='profiles/abdullah.html'">
+      </a>
+      <a href="team/raihan.html" class="card">
+        <img src="LINK_TO_IMAGE" alt="Abdullah Bin Jubayer Raihan">
         <h3>Abdullah Bin Jubayer Raihan</h3>
         <p>Chief Developer (CTO)</p>
-      </div>
-      <div class="card" onclick="location.href='profiles/abid.html'">
+      </a>
+      <a href="team/abid.html" class="card">
+        <img src="LINK_TO_IMAGE" alt="Abid Hassan">
         <h3>Abid Hassan</h3>
         <p>Client Relations & Marketing Manager</p>
-      </div>
-    </div>
-
-    <!-- QA -->
-    <div class="level">
-      <div class="card" onclick="location.href='profiles/samiul.html'">
+      </a>
+      <a href="team/samiul.html" class="card">
+        <img src="LINK_TO_IMAGE" alt="Samiul Islam">
         <h3>Samiul Islam</h3>
         <p>Chief Tester (QA Lead)</p>
-      </div>
-      <div class="card" onclick="location.href='profiles/sazid.html'">
+      </a>
+      <a href="team/sazid.html" class="card">
+        <img src="LINK_TO_IMAGE" alt="Sazid Islam Akash">
         <h3>Sazid Islam Akash</h3>
         <p>QA Tester</p>
-      </div>
+      </a>
     </div>
-  </div>
+  </section>
+
+  <section id="products">
+    <h2>Our Products</h2>
+    <div class="product-grid">
+      <a href="products/elite-panel.html" class="card">
+        <h3>Elite Panel</h3>
+        <p>DIRECT HEAD AIMBOT, LOCATION</p>
+        <p>Price: 500TK (1M) | 1000TK (3M) | 1500TK (Lifetime)</p>
+      </a>
+      <a href="products/panel-prime.html" class="card">
+        <h3>Panel Prime</h3>
+        <p>Elite Features + Sniper Scope + Switch</p>
+        <p>Price: 800TK (1M) | 1500TK (3M) | 2500TK (Lifetime)</p>
+      </a>
+      <a href="products/android-panel.html" class="card">
+        <h3>Android Panels</h3>
+        <p>Hologram Location Panel – 100% Safe</p>
+        <p>Price: 1500TK (1 OBB Update)</p>
+      </a>
+      <a href="products/ios-panel.html" class="card">
+        <h3>iOS Panels</h3>
+        <p>Drag: 2500TK, Body: 2000TK, Drag+Location: 3500TK, Body+Location: 2500TK</p>
+      </a>
+      <a href="products/code-cracker.html" class="card">
+        <h3>RED-X Code Cracker</h3>
+        <p>Crack ANY panel codes. Powerful for professionals.</p>
+        <p>Price: 3000TK (1 Year)</p>
+      </a>
+      <a href="products/emulator-tools.html" class="card">
+        <h3>Emulator Bypass Tools</h3>
+        <p>SAFE & optimized for low-end PCs</p>
+        <p>OBB49 Compatible</p>
+      </a>
+      <a href="products/brutal-panel.html" class="card">
+        <h3>Brutal Panel</h3>
+        <p>Coming Soon...</p>
+      </a>
+      <a href="products/dynamic-panel.html" class="card">
+        <h3>Dynamic Panel</h3>
+        <p>Coming Soon...</p>
+      </a>
+      <a href="products/premium-panel.html" class="card">
+        <h3>Premium Panel</h3>
+        <p>Coming Soon...</p>
+      </a>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact & Social Links</h2>
+    <div class="contact-links">
+      <a href="https://discord.gg/f7KPc9JyeY">Discord Server</a>
+      <a href="https://www.youtube.com/@RedX_Official1">YouTube Channel</a>
+      <a href="https://t.me/+OglBPVcrngY1OGQ9">Telegram Channel</a>
+      <a href="mailto:official.redxcorporation@gmail.com">Email Us</a>
+      <a href="#">Facebook Page (Coming Soon)</a>
+      <a href="#">TikTok (Coming Soon)</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 RED-X Corporation. All rights reserved.</p>
+  </footer>
 </body>
+
 </html>
