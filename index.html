@@ -234,27 +234,28 @@
       font-size: 1.1rem;
     }
 
-    /* Grids & Cards */
-    .team-grid, .product-grid {
+    /* Team Section - New Design */
+    .team-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 30px;
     }
 
-    .card {
+    .team-card {
       background: linear-gradient(145deg, #151515, #0f0f0f);
       border: 1px solid rgba(51, 51, 51, 0.5);
       border-radius: 15px;
-      padding: 25px;
+      padding: 30px;
       text-align: center;
       transition: var(--transition);
-      cursor: pointer;
-      overflow: hidden;
       position: relative;
       box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .card::before {
+    .team-card::before {
       content: '';
       position: absolute;
       top: 0;
@@ -267,56 +268,123 @@
       transition: transform 0.5s ease;
     }
 
-    .card:hover::before {
+    .team-card:hover::before {
       transform: scaleX(1);
     }
 
-    .card:hover {
+    .team-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
       border-color: rgba(229, 9, 20, 0.3);
     }
 
-    .card img {
-      width: 100%;
-      height: 220px;
+    .team-img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
       object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       transition: var(--transition);
+      border: 3px solid var(--primary);
       filter: grayscale(20%);
     }
 
-    .card:hover img {
+    .team-card:hover .team-img {
       filter: grayscale(0%);
-      transform: scale(1.03);
+      transform: scale(1.05);
+      border-color: var(--secondary);
     }
 
-    .card h3 {
-      margin: 10px 0 5px;
+    .team-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.5rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      color: white;
+    }
+
+    .team-card p {
+      color: #bbb;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .profile-button {
+      display: inline-block;
+      background: rgba(229, 9, 20, 0.15);
+      color: white;
+      text-decoration: none;
+      padding: 10px 25px;
+      border-radius: 30px;
+      font-weight: 500;
+      transition: var(--transition);
+      border: 1px solid rgba(229, 9, 20, 0.3);
+    }
+
+    .profile-button:hover {
+      background: rgba(229, 9, 20, 0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(229, 9, 20, 0.2);
+    }
+
+    /* Product Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .product-card {
+      background: linear-gradient(145deg, #151515, #0f0f0f);
+      border: 1px solid rgba(51, 51, 51, 0.5);
+      border-radius: 15px;
+      padding: 25px;
+      text-align: center;
+      transition: var(--transition);
+      position: relative;
+      box-shadow: var(--shadow);
+    }
+
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--primary);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s ease;
+    }
+
+    .product-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+      border-color: rgba(229, 9, 20, 0.3);
+    }
+
+    .product-card h3 {
+      margin: 0 0 15px;
       font-size: 1.4rem;
       font-family: 'Montserrat', sans-serif;
       font-weight: 600;
+      color: white;
     }
 
-    .card p {
+    .product-card p {
       color: #bbb;
       font-size: 1rem;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
 
-    .price {
-      display: block;
-      background: rgba(229, 9, 20, 0.15);
-      padding: 8px 15px;
-      border-radius: 20px;
-      font-weight: 500;
-      margin-top: 15px;
-      transition: var(--transition);
-    }
-
-    .card:hover .price {
-      background: rgba(229, 9, 20, 0.3);
+    .coming-soon {
+      opacity: 0.7;
     }
 
     /* Contact Section */
@@ -373,10 +441,6 @@
       box-shadow: 0 0 15px rgba(0, 217, 255, 0.3);
     }
 
-    .coming-soon {
-      opacity: 0.7;
-    }
-
     /* Footer */
     footer {
       text-align: center;
@@ -409,6 +473,7 @@
       color: #aaa;
       font-size: 1.3rem;
       transition: var(--transition);
+      text-decoration: none;
     }
 
     .social-links a:hover {
@@ -459,6 +524,11 @@
       .contact-links {
         grid-template-columns: 1fr;
       }
+      
+      .team-img {
+        width: 140px;
+        height: 140px;
+      }
     }
 
     @media (max-width: 480px) {
@@ -479,6 +549,10 @@
       
       header h1 {
         font-size: 2rem;
+      }
+      
+      .section-header h2 {
+        font-size: 1.8rem;
       }
     }
   </style>
@@ -511,36 +585,42 @@
       <p>The talented professionals behind our cutting-edge gaming solutions</p>
     </div>
     <div class="team-grid">
-      <a href="team/mohtasim.html" class="card">
-        <img src="https://i.ibb.co/Lhxy0BQq/0516-1.gif" alt="Mohtasim Billah Jitu">
+      <div class="team-card">
+        <img src="https://i.ibb.co/Lhxy0BQq/0516-1.gif" alt="Mohtasim Billah Jitu" class="team-img">
         <h3>Mohtasim Billah Jitu</h3>
         <p>CEO, Founder & Lead Developer</p>
-      </a>
-      <a href="team/ashik.html" class="card">
-        <img src="https://i.ibb.co/gM0gbL5H/image.png" alt="Ashik Limon">
+        <a href="team/mohtasim.html" class="profile-button">View Profile</a>
+      </div>
+      <div class="team-card">
+        <img src="https://i.ibb.co/gM0gbL5H/image.png" alt="Ashik Limon" class="team-img">
         <h3>Ashik Limon</h3>
         <p>General Manager & YouTube Manager</p>
-      </a>
-      <a href="team/raihan.html" class="card">
-        <img src="https://i.ibb.co/JFnssdWf/image.png" alt="Abdullah Bin Jubayer Raihan">
+        <a href="team/ashik.html" class="profile-button">View Profile</a>
+      </div>
+      <div class="team-card">
+        <img src="https://i.ibb.co/JFnssdWf/image.png" alt="Abdullah Bin Jubayer Raihan" class="team-img">
         <h3>Abdullah Bin Jubayer Raihan</h3>
         <p>Chief Developer (CTO)</p>
-      </a>
-      <a href="team/abid.html" class="card">
-        <img src="https://i.ibb.co/1Y0sb31F/Whats-App-Image-2025-06-22-at-11-38-00-PM.jpg" alt="Abid Hassan">
+        <a href="team/raihan.html" class="profile-button">View Profile</a>
+      </div>
+      <div class="team-card">
+        <img src="https://i.ibb.co/1Y0sb31F/Whats-App-Image-2025-06-22-at-11-38-00-PM.jpg" alt="Abid Hassan" class="team-img">
         <h3>Abid Hassan</h3>
         <p>Client Relations & Marketing Manager</p>
-      </a>
-      <a href="team/samiul.html" class="card">
-        <img src="https://i.ibb.co/KjcVDfnK/image.png" alt="Samiul Islam">
+        <a href="team/abid.html" class="profile-button">View Profile</a>
+      </div>
+      <div class="team-card">
+        <img src="https://i.ibb.co/KjcVDfnK/image.png" alt="Samiul Islam" class="team-img">
         <h3>Samiul Islam</h3>
         <p>Chief Tester (QA Lead)</p>
-      </a>
-      <a href="team/sazid.html" class="card">
-        <img src="https://i.ibb.co/yc3TkpyV/image.png" alt="Sazid Islam Akash">
+        <a href="team/samiul.html" class="profile-button">View Profile</a>
+      </div>
+      <div class="team-card">
+        <img src="https://i.ibb.co/yc3TkpyV/image.png" alt="Sazid Islam Akash" class="team-img">
         <h3>Sazid Islam Akash</h3>
         <p>QA Tester</p>
-      </a>
+        <a href="team/sazid.html" class="profile-button">View Profile</a>
+      </div>
     </div>
   </section>
 
@@ -550,47 +630,43 @@
       <p>High-performance gaming solutions designed for competitive advantage</p>
     </div>
     <div class="product-grid">
-      <a href="products/elite-panel.html" class="card">
+      <div class="product-card">
         <h3>Elite Panel</h3>
         <p>DIRECT HEAD AIMBOT, LOCATION</p>
-        <span class="price">500TK (1M) | 1000TK (3M) | 1500TK (Lifetime)</span>
-      </a>
-      <a href="products/panel-prime.html" class="card">
+      </div>
+      <div class="product-card">
         <h3>Panel Prime</h3>
         <p>Elite Features + Sniper Scope + Switch</p>
-        <span class="price">800TK (1M) | 1500TK (3M) | 2500TK (Lifetime)</span>
-      </a>
-      <a href="products/android-panel.html" class="card">
+      </div>
+      <div class="product-card">
         <h3>Android Panels</h3>
         <p>Hologram Location Panel – 100% Safe</p>
-        <span class="price">1500TK (1 OBB Update)</span>
-      </a>
-      <a href="products/ios-panel.html" class="card">
+      </div>
+      <div class="product-card">
         <h3>iOS Panels</h3>
-        <p>Drag: 2500TK, Body: 2000TK, Drag+Location: 3500TK, Body+Location: 2500TK</p>
-      </a>
-      <a href="products/code-cracker.html" class="card">
+        <p>Drag, Body, Location and combination panels</p>
+      </div>
+      <div class="product-card">
         <h3>RED-X Code Cracker</h3>
         <p>Crack ANY panel codes. Powerful for professionals.</p>
-        <span class="price">3000TK (1 Year)</span>
-      </a>
-      <a href="products/emulator-tools.html" class="card">
+      </div>
+      <div class="product-card">
         <h3>Emulator Bypass Tools</h3>
         <p>SAFE & optimized for low-end PCs</p>
         <p>OBB49 Compatible</p>
-      </a>
-      <a href="products/brutal-panel.html" class="card">
+      </div>
+      <div class="product-card">
         <h3>Brutal Panel</h3>
         <p class="coming-soon">Coming Soon...</p>
-      </a>
-      <a href="products/dynamic-panel.html" class="card">
+      </div>
+      <div class="product-card">
         <h3>Dynamic Panel</h3>
         <p class="coming-soon">Coming Soon...</p>
-      </a>
-      <a href="products/premium-panel.html" class="card">
+      </div>
+      <div class="product-card">
         <h3>Premium Panel</h3>
         <p class="coming-soon">Coming Soon...</p>
-      </a>
+      </div>
     </div>
   </section>
 
